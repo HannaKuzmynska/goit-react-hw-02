@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import Feedback from './components/Feedback/Feedback';
 import Options from './components/Options/Options';
-import Description from './components/Notification/Notification';
+import Notification from './components/Notification/Notification';
 import './App.css'; 
 
-const App = () => {
+function App() {
   const [feedback, setFeedback] = useState(() => {
     const savedFeedback = localStorage.getItem('feedback');
     return savedFeedback ? JSON.parse(savedFeedback) : { good: 0, neutral: 0, bad: 0 };
@@ -34,7 +34,7 @@ const App = () => {
       <p>Please leave your feedback about our service by selecting one of the options below.</p>
       <Options onLeaveFeedback={updateFeedback} onReset={resetFeedback} totalFeedback={totalFeedback} />
       {totalFeedback === 0 ? (
-        <Description message="No feedback given" />
+        <Notification message="No feedback given" />
       ) : (
         <Feedback
           good={feedback.good}
@@ -46,6 +46,6 @@ const App = () => {
       )}
     </div>
   );
-};
+}
 
 export default App;
