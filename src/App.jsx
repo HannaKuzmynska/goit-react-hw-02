@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Feedback from './components/Feedback/Feedback';
 import Options from './components/Options/Options';
 import Notification from './components/Notification/Notification';
+import Description from './components/Description/Description';
 import './App.css'; 
 
 function App() {
@@ -29,9 +30,8 @@ function App() {
   const positiveFeedbackPercentage = totalFeedback ? Math.round((feedback.good / totalFeedback) * 100) : 0;
 
   return (
-    <div className="app"> {}
-      <h1>Sip Happens Café</h1>
-      <p>Please leave your feedback about our service by selecting one of the options below.</p>
+    <div className="app"> {/* Використання класу з глобального CSS */}
+      <Description />
       <Options onLeaveFeedback={updateFeedback} onReset={resetFeedback} totalFeedback={totalFeedback} />
       {totalFeedback === 0 ? (
         <Notification message="No feedback given" />
